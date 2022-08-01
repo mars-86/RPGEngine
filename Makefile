@@ -14,6 +14,7 @@
 #CXX = g++
 #CXX = clang++
 
+PARENT_BRANCH = main
 STAGE = debug
 
 EXE_DIR = bin
@@ -86,3 +87,8 @@ $(EXE_DIR)/$(STAGE)/$(EXE): $(addprefix $(OBJS_DIR)/$(STAGE)/, $(OBJS))
 
 clean:
 	rm -f $(EXE_DIR)/$(STAGE)/$(EXE) $(addprefix $(OBJS_DIR)/$(STAGE)/, $(OBJS))
+
+git-checkout:
+	@echo Checkout submodules to ${PARENT_BRANCH}
+	git submodule update --remote --recursive --init
+	git submodule foreach -q --recursive 'echo submodule $$name; git checkout $$(git config -f $$toplevel/.gitmodules submodule.$$name.branch || git config -f $$toplevel/.gitmodules submodule.$$name -b ${PARENT_BRANCH}); echo \\n'
