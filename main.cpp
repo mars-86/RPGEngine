@@ -1,7 +1,7 @@
 #include "imgui/imgui.h"
 #include "imgui/backends/imgui_impl_sdl.h"
 #include "imgui/backends/imgui_impl_sdlrenderer.h"
-#include "gui/main_menu_bar.h"
+#include "gui/imgui/main_menu_bar.h"
 #include <stdio.h>
 #include <SDL.h>
 

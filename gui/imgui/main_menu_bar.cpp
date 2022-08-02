@@ -1,6 +1,6 @@
-#include "../imgui/imgui.h"
-#include "../imgui/backends/imgui_impl_sdl.h"
-#include "../imgui/backends/imgui_impl_sdlrenderer.h"
+#include "../../imgui/imgui.h"
+#include "../../imgui/backends/imgui_impl_sdl.h"
+#include "../../imgui/backends/imgui_impl_sdlrenderer.h"
 
 bool show_file_new_item = false;
 bool show_help_about_item = false;

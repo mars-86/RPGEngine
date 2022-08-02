@@ -25,7 +25,7 @@ GUI_DIR = gui
 SOURCES = main.cpp
 SOURCES += $(IMGUI_DIR)/imgui.cpp $(IMGUI_DIR)/imgui_demo.cpp $(IMGUI_DIR)/imgui_draw.cpp $(IMGUI_DIR)/imgui_tables.cpp $(IMGUI_DIR)/imgui_widgets.cpp
 SOURCES += $(IMGUI_DIR)/backends/imgui_impl_sdl.cpp $(IMGUI_DIR)/backends/imgui_impl_sdlrenderer.cpp
-SOURCES += $(GUI_DIR)/main_menu_bar.cpp
+SOURCES += $(GUI_DIR)/imgui/main_menu_bar.cpp
 OBJS = $(addsuffix .o, $(basename $(notdir $(SOURCES))))
 UNAME_S := $(shell uname -s)
 
@@ -76,7 +76,7 @@ $(addprefix $(OBJS_DIR)/$(STAGE)/, %.o):$(IMGUI_DIR)/%.cpp
 $(addprefix $(OBJS_DIR)/$(STAGE)/, %.o):$(IMGUI_DIR)/backends/%.cpp
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
-$(addprefix $(OBJS_DIR)/$(STAGE)/, %.o):$(GUI_DIR)/%.cpp
+$(addprefix $(OBJS_DIR)/$(STAGE)/, %.o):$(GUI_DIR)/imgui/%.cpp
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
 all: $(EXE_DIR)/$(STAGE)/$(EXE) 
