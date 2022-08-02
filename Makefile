@@ -88,7 +88,10 @@ $(EXE_DIR)/$(STAGE)/$(EXE): $(addprefix $(OBJS_DIR)/$(STAGE)/, $(OBJS))
 clean:
 	rm -f $(EXE_DIR)/$(STAGE)/$(EXE) $(addprefix $(OBJS_DIR)/$(STAGE)/, $(OBJS))
 
+git-pull:
+	git submodule foreach --recursive 'git pull --rebase origin'
+
 git-checkout:
 	@echo Checkout submodules to ${PARENT_BRANCH}
 	git submodule update --remote --recursive --init
-	git submodule foreach -q --recursive 'echo submodule $$name; git checkout $$(git config -f $$toplevel/.gitmodules submodule.$$name.branch || git config -f $$toplevel/.gitmodules submodule.$$name -b ${PARENT_BRANCH}); echo \\n'
+	git submodule foreach -q --recursive 'echo submodule $$name; git checkout $$(git config -f $$toplevel/.gitmodules submodule.$$name.branch || echo ${PARENT_BRANCH}); echo \\n'
